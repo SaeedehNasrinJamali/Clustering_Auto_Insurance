@@ -70,6 +70,8 @@ for col in cols_to_plot:
     plt.xlabel(col)
     plt.ylabel("Count")
     plt.grid(True, linestyle='--', alpha=0.6)
+    plt.savefig(f"outputs/figures/dist_{col}.png",
+                dpi=300, bbox_inches="tight", facecolor="white")
     plt.show()
 
 
@@ -231,19 +233,11 @@ sns.scatterplot(
 # save it 
 plt.savefig("outputs/figures/cluster_value_vs_severity.png", dpi=300, bbox_inches="tight")
 
-
 df_cluster.groupby("cluster")[["severity", "Value_vehicle", "Premium_log"]].mean()
-
-
-
 
 sns.scatterplot(x="driver_age", y="Premium_log", hue="cluster", data=df_cluster)
 
 plt.savefig("outputs/figures/cluster_age_vs_premiumlog.png", dpi=300, bbox_inches="tight")
-
-
-
-
 
 sns.scatterplot(x="Power", y="severity_log", hue="cluster", data=df_cluster)
 plt.savefig("outputs/figures/cluster_power_vs_severitylog.png", dpi=300, bbox_inches="tight")
